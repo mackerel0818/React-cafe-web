@@ -12,7 +12,7 @@ export default function Home() {
             카페에 오신 것을 환영합니다!
           </h1>
           <p className="text-center text-gray-600 mb-8">
-            매일 당신을 위한 특별한 커피 경험을 제공합니다.
+            품격 있는 커피, 훌륭한 서비스, 그리고 미소 한 잔.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
           <Products />

@@ -130,3 +130,7 @@ export async function UpdateOrderStatus(orderId, newStatus) {
   console.log(orderId);
   await update(ref(database, `orders/${orderId}`), { state: newStatus });
 }
+
+export async function removeFromOrders(orderId) {
+  return remove(ref(database, `orders/${orderId}`));
+}

@@ -27,7 +27,7 @@ export default function ProductCard({
       <p className="text-gray-600">{category}</p>
       <p className="text-brand font-bold text-lg mt-2">{`₩${price}`}</p>
       <p className="text-gray-400 my-2">{temp}</p>
-      {user && <Button text={"ADD TO CART"} onClick={handleClick} />}
+      {user && <Button text={"장바구니에 넣기"} onClick={handleClick} />}
     </li>
   );
 }

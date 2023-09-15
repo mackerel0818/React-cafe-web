@@ -17,7 +17,7 @@ export default function Navbar() {
         <h1>Cafe</h1>
       </Link>
       <nav className="flex items-center gap-4 font-semibold">
-        <Link to="/products">Products</Link>
+        <Link to="/products">MENU</Link>
         {user && (
           <>
             <Link to="/ordered" className="text-2xl">

@@ -125,7 +125,7 @@ export default function NewProduct() {
 
   return (
     <section>
-      <h2 className="text-3xl text-center font-bold my-6">상품 등록</h2>
+      <h2 className="text-3xl text-center font-bold my-6 pt-4">상품 등록</h2>
       {success && <p>✅ {success}</p>}
       <div className="flex justify-center">
         <button className="text-3xl" onClick={toggleFormVisibility}>

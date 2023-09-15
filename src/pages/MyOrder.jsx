@@ -1,6 +1,10 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { UpdateOrderStatus, getOrders } from "../api/firebase";
+import {
+  UpdateOrderStatus,
+  getOrders,
+  removeFromOrders,
+} from "../api/firebase";
 import { useAuthContext } from "../components/context/AuthContext";
 import { BsFire, BsSnow2 } from "react-icons/bs";
 import CategoryIcon from "../components/CategoryIcon";
@@ -37,17 +41,29 @@ export default function MyOrder() {
       setSuccess("❌❌주문이 취소되었습니다!❌❌");
       setInterval(() => {
         setSuccess(null);
-      }, 6000);
+      }, 4000);
+    });
+    refetchOrder();
+  };
+
+  const handleRemove = (order) => {
+    removeFromOrders(order.orderId).then(() => {
+      setSuccess("❌❌주문 내역에서 삭제되었습니다!❌❌");
+      setInterval(() => {
+        setSuccess(null);
+      }, 4000);
     });
     refetchOrder();
   };
 
   return (
     <section>
-      <h1 className="text-3xl text-center font-bold mt-6 mb-10">주문 내역</h1>
+      <h1 className="text-3xl text-center font-bold pt-4 mt-6 mb-10">
+        주문 내역
+      </h1>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {!hasOrders && (
+      {(!hasOrders || myOrders.length === 0) && (
         <p className="text-center">❌❌주문 내역이 없습니다!❌❌</p>
       )}
       {success && <p className="text-center mb-4">{success}</p>}
@@ -115,11 +131,27 @@ export default function MyOrder() {
               {order.state === "cancelled" && (
                 <p className="text-center font-bold text-red-500">
                   취소된 주문입니다.
+                  <div className="flex flex-col mt-4">
+                    <Button
+                      text={"주문 내역에서 삭제"}
+                      onClick={() => {
+                        handleRemove(order);
+                      }}
+                    />
+                  </div>
                 </p>
               )}
               {order.state === "paid" && (
                 <p className="text-center font-bold text-brand">
                   결제된 주문입니다.
+                  <div className="flex flex-col mt-4">
+                    <Button
+                      text={"주문 내역에서 삭제"}
+                      onClick={() => {
+                        handleRemove(order);
+                      }}
+                    />
+                  </div>
                 </p>
               )}
             </li>
