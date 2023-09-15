@@ -135,7 +135,7 @@ export default function NewProduct() {
       {isFormVisible && (
         <form
           className={
-            "flex flex-col lg:max-w-screen-xl gap-3 border-2 border-gray-300 p-6 my-4 mx-8 lg:mx-auto"
+            "flex flex-col lg:max-w-screen-xl gap-3 border-2 border-gray-300 p-6 my-4 mx-8 xl:mx-auto"
           }
           onSubmit={handleSubmit}
         >
