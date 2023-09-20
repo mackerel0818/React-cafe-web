@@ -113,7 +113,7 @@ export default function NewProduct() {
       addNewProduct(product) //
         .then(() => {
           refetchProductList();
-          setSuccess("성공적으로 제품이 추가되었습니다!");
+          setSuccess("상품이 성공적으로 추가되었습니다!");
           setIsFormVisible(!isFormVisible);
           setTimeout(() => {
             setSuccess(null);
